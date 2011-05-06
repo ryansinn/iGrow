@@ -1,4 +1,4 @@
-/*    */ package com.bukkit.techguard.igrow;
+/*    */ package com.gmail.ryansinn.iGrow;
 /*    */ 
 /*    */ public class Recipe
 /*    */ {
