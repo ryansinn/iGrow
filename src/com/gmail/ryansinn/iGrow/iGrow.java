@@ -26,6 +26,7 @@
 /*  21 */   private String file = this.dirs + "config.properties";
 /*  22 */   private int TIMER_ = 33;
 /*  23 */   public int AREA_ = 100;
+			public boolean MINECRAFTTIMEMESSAGE_= false;
 /*  24 */   private final HashMap<Player, Boolean> debugees = new HashMap();
 /*  25 */   public ArrayList<Recipe> Recipes = new ArrayList();
 /*  26 */   Thread Event = new onEvent(this);
@@ -75,6 +76,7 @@
 /*  70 */         out.write("#Properties file for iGrow"); out.newLine();
 /*  71 */         out.write("#The timer-interval is in SECONDS!"); out.newLine();
 /*  72 */         out.write("#block-area is the area around the player to check."); out.newLine();
+/*  72 */         out.write("#debug-tick-message is for debugging - this _will_ spam your server console and log."); out.newLine();
 /*  73 */         out.write(""); out.newLine();
 /*  74 */         out.write("timer-interval = 33"); out.newLine();
 /*  75 */         out.write("check-block-area = 100");
@@ -86,7 +88,6 @@
 /*     */       String strLine;
 /*  82 */       while ((strLine = br.readLine()) != null)
 /*     */       {
-/*     */         String strLine;
 /*  83 */         if (strLine.startsWith("timer-interval = ")) {
 /*  84 */           this.TIMER_ = Integer.parseInt(strLine.substring(17));
 /*     */         }
@@ -142,7 +143,6 @@
 /*     */       String strLine;
 /* 136 */       while ((strLine = br.readLine()) != null)
 /*     */       {
-/*     */         String strLine;
 /* 137 */         if (strLine.startsWith("#")) {
 /*     */           continue;
 /*     */         }
