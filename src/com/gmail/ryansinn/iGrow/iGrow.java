@@ -26,6 +26,7 @@ public class iGrow extends JavaPlugin
   private String file = this.dirs + "config.properties";
   private int TIMER_ = 33;
   public int AREA_ = 100;
+  public boolean DEBUGMESSAGES_ = false;
   private final HashMap<Player, Boolean> debugees = new HashMap();
   public ArrayList<Recipe> Recipes = new ArrayList();
   Thread Event = new onEvent(this);
@@ -75,9 +76,11 @@ public class iGrow extends JavaPlugin
         out.write("#Properties file for iGrow"); out.newLine();
         out.write("#The timer-interval is in SECONDS!"); out.newLine();
         out.write("#block-area is the area around the player to check."); out.newLine();
+        out.write("#debug-messages is for debugging only - this _will_ spam your server console and log."); out.newLine();
         out.write(""); out.newLine();
         out.write("timer-interval = 33"); out.newLine();
         out.write("check-block-area = 100");
+        out.write("debug-messages = false");
         out.close();
       }
       FileInputStream fstream = new FileInputStream(this.file);
@@ -197,7 +200,12 @@ public class iGrow extends JavaPlugin
     return pdfFile.getVersion();
   }
   public void sM(String message) {
-    System.out.println("[" + getName() + " : " + getVersion() + "] " + message);
+    System.out.println("[" + getName() + ":" + getVersion() + "] " + message);
+  }
+  public void sMdebug(String message) {
+	if (DEBUGMESSAGES_ == true) {    
+	  System.out.println("[" + getName() + ":" + getVersion() + "] " + message);
+	}
   }
   public Player getPlayer(String name) {
     for (Player pl : getServer().getOnlinePlayers()) {

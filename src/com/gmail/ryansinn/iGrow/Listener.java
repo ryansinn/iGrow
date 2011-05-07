@@ -14,7 +14,7 @@ public class Listener
   public static void onEvent(iGrow plugin)
   {
     for (Player p2 : plugin.getServer().getOnlinePlayers()) {
-      System.out.println("MineCraft Time: " + p2.getWorld().getTime());
+      plugin.sMdebug("MineCraft Time: " + p2.getWorld().getTime());
       for (int x = (int)p2.getLocation().getX() - plugin.AREA_; x <= p2.getLocation().getX() + plugin.AREA_; x++)
         for (int y = (int)p2.getLocation().getY() - plugin.AREA_; y <= p2.getLocation().getY() + plugin.AREA_; y++)
           for (int z = (int)p2.getLocation().getZ() - plugin.AREA_; z <= p2.getLocation().getZ() + plugin.AREA_; z++)
