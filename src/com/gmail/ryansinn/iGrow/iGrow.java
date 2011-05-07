@@ -96,6 +96,7 @@ public class iGrow extends JavaPlugin
           this.AREA_ = Integer.parseInt(strLine.substring(19));
         }
       }
+	  sM("Timer: "+this.TIMER_ + ", Area: " +this.AREA_+", Debug messages: "+DEBUGMESSAGES_);
       in.close();
     } catch (Exception e) {
       System.err.println("Error: " + e.getMessage());
