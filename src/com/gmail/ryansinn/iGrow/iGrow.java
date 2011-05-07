@@ -95,6 +95,9 @@ public class iGrow extends JavaPlugin
         if (strLine.startsWith("check-block-area = ")) {
           this.AREA_ = Integer.parseInt(strLine.substring(19));
         }
+        if (strLine.startsWith("debug-messages = ")) {
+          this.DEBUGMESSAGES_ = true;
+	    }
       }
 	  sM("Timer: "+this.TIMER_ + ", Area: " +this.AREA_+", Debug messages: "+DEBUGMESSAGES_);
       in.close();
