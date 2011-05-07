@@ -148,7 +148,8 @@ public class iGrow extends JavaPlugin
         if (strLine.startsWith("#")) {
           continue;
         }
-        String[] donees = strLine.split(",");
+        String[] removeComments = strLine.split("#");
+	    String[] donees = removeComments[0].split(",");
         if ((donees.length < 4) || (donees.length > 6)) {
           continue;
         }
