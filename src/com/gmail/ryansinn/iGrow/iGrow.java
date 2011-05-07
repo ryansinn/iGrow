@@ -119,12 +119,13 @@ public class iGrow extends JavaPlugin
         out.write("#Recipes file for iGrow"); out.newLine();
         out.write("#Lines that starts with the '#' sign, will be ignored!!"); out.newLine();
         out.write("#Usage:"); out.newLine();
-        out.write("#  oldBlock,newBlock,needBlock,Chance:OutOf,enableNear"); out.newLine();
+        out.write("#  oldBlock,newBlock,needBlock,Chance:OutOf,enableNear,world"); out.newLine();
         out.write("#    - oldBlock = The block it was before"); out.newLine();
         out.write("#    - newBlock = The block it will change to"); out.newLine();
         out.write("#    - needBlock = The oldBlock needs to be connected to this block"); out.newLine();
         out.write("#    - Chance:OutOf = The chance to let the block change"); out.newLine();
         out.write("#    - enableNear = Spread newBlocks over the oldBlocks"); out.newLine();
+        out.write("#    - world = name of the world this applies to - leave blank for all worlds"); out.newLine();
         out.write("#The first recipe (mossycobble) is enabled below."); out.newLine();
         out.write(""); out.newLine();
         out.write("#Mossy Cobblestone:"); out.newLine();
@@ -148,7 +149,7 @@ public class iGrow extends JavaPlugin
           continue;
         }
         String[] donees = strLine.split(",");
-        if ((donees.length < 4) || (donees.length > 5)) {
+        if ((donees.length < 4) || (donees.length > 6)) {
           continue;
         }
         Recipe recipe = new Recipe();
@@ -169,6 +170,9 @@ public class iGrow extends JavaPlugin
         }
         else if (donees[4].contains("false")) {
           recipe.Near = false;
+        }
+		if (donees.length == 6) {
+		  recipe.world = donees[5]; 
         }
         this.Recipes.add(recipe);
       }

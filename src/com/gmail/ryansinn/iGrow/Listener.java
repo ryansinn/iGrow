@@ -8,23 +8,29 @@ import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Listener
 {
   public static void onEvent(iGrow plugin)
   {
     for (Player p2 : plugin.getServer().getOnlinePlayers()) {
+      Pattern pattern = Pattern.compile("\\s*"+p2.getWorld().getName()+"\\s*"); // compile our regex check for matching world here so only once per player
       plugin.sMdebug("MineCraft Time: " + p2.getWorld().getTime());
       for (int x = (int)p2.getLocation().getX() - plugin.AREA_; x <= p2.getLocation().getX() + plugin.AREA_; x++)
         for (int y = (int)p2.getLocation().getY() - plugin.AREA_; y <= p2.getLocation().getY() + plugin.AREA_; y++)
           for (int z = (int)p2.getLocation().getZ() - plugin.AREA_; z <= p2.getLocation().getZ() + plugin.AREA_; z++)
             for (Recipe r : plugin.Recipes) {
-              if (p2.getWorld().getBlockTypeIdAt(x, y, z) == r.needBlock) {
-                ChangeBlocks(p2.getWorld(), plugin, p2.getWorld().getBlockAt(x, y, z), r);
-              }
-              if ((!r.Near) || 
-                (p2.getWorld().getBlockTypeIdAt(x, y, z) != r.newBlock)) continue;
-              ChangeBlocks(p2.getWorld(), plugin, p2.getWorld().getBlockAt(x, y, z), r);
+              Matcher matcher = pattern.matcher(r.world);
+              if (r.world == "" || matcher.matches()) {
+	              if (p2.getWorld().getBlockTypeIdAt(x, y, z) == r.needBlock) {
+	                ChangeBlocks(p2.getWorld(), plugin, p2.getWorld().getBlockAt(x, y, z), r);
+	              }
+	              if ((!r.Near) || 
+	                (p2.getWorld().getBlockTypeIdAt(x, y, z) != r.newBlock)) continue;
+	              ChangeBlocks(p2.getWorld(), plugin, p2.getWorld().getBlockAt(x, y, z), r);
+	            }
             }
     }
   }

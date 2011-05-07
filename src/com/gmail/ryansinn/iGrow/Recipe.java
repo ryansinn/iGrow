@@ -7,6 +7,7 @@ public class Recipe
   public int needBlock;
   public int[] Chance = { 0, 10 };
   public boolean Near = false;
+  public String world = "";
 }
 
 /* Location:           C:\Users\Robin\Downloads\iGrow.jar
