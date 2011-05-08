@@ -158,9 +158,30 @@ public class iGrow extends JavaPlugin
           continue;
         }
         Recipe recipe = new Recipe();
-        recipe.oldBlock = Integer.parseInt(donees[0]);
-        recipe.newBlock = Integer.parseInt(donees[1]);
-        recipe.needBlock = Integer.parseInt(donees[2]);
+        if (donees[0].contains("@")) {
+        	String[] needBlockDataArray = donees[0].split("@");
+        	recipe.oldBlock = String.valueOf(needBlockDataArray[0]);
+        	recipe.oldBlockData = String.valueOf(needBlockDataArray[1]);
+        } else {
+        	recipe.oldBlock = String.valueOf(donees[0]);
+        	recipe.oldBlockData = "";					  
+        }
+        if (donees[1].contains("@")) {
+        	String[] needBlockDataArray = donees[1].split("@");
+        	recipe.newBlock = String.valueOf(needBlockDataArray[0]);
+        	recipe.newBlockData = String.valueOf(needBlockDataArray[1]);
+        } else {
+        	recipe.newBlock = String.valueOf(donees[1]);
+        	recipe.newBlockData = "";					  
+        }
+        if (donees[2].contains("@")) {
+        	String[] needBlockDataArray = donees[2].split("@");
+        	recipe.needBlock = String.valueOf(needBlockDataArray[0]);
+        	recipe.needBlockData = String.valueOf(needBlockDataArray[1]);
+        } else {
+        	recipe.needBlock = String.valueOf(donees[2]);
+        	recipe.needBlockData = "";					  
+        }
         if (donees[3].contains(":")) {
           String[] donees3 = donees[3].split(":");
           recipe.Chance[0] = Integer.parseInt(donees3[0]);
