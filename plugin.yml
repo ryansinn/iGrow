@@ -1,0 +1,9 @@
+name: iGrow
+main: com.gmail.ryansinn.iGrow.iGrow
+version: z2.1
+website: https://github.com/Zarius/iGrow
+description: Yes, Moss can grow!
+authors:
+  - TechGuard
+  - Xarqn
+commands:
