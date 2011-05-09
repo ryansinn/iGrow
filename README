@@ -1,2 +1,36 @@
 Many thanks to TechGuard for his original work on this great Craftbukkit plugin.
 
+Changelog:
+Version z2.1:
+
+* Xarqn forked iGrow plugin
+* "MinecraftTime" message is now an optional debug message and false by default
+* All iGrow messages are now prefixed by [iGrow:<version #>], additional debug messages added - these WILL spam your server log
+* Multiworld!   
+* Recipes can now have a comment on the same line as the recipe (eg. "4,48,9,30:100,false,world  # cobble to moss adj. water")
+
+Bugs
+* timer keeps on queuing changes. If the server can't keep up with the current changes this will eventually overload and crash the server.
+
+Quirks
+* flowers will grow underground too if there is air below the grass block and another grass block below that (allow to select direction/faces to change?)
+* can't use 1:1 chance
+* be wary of using a large number of droppables (eg. mass growth of reeds in areas they won't stay) as this can lag the clients (doesn't seem to lag the server so much)
+
+Todo:
+
+* key/value recipe lines (eg. old:AIR,new:GLOWSTONE,needs:LEAVES,chance:30/100,world:myworld,near:false)
+   - this allows lines to be read in any order, easily verify recipes, default values for world & near so doesn't matter if these are left out
+* lightlevel requirements
+* biome requirements
+* face specification
+Build a hash map:
+blockCountMap("LEAVES", "3")
+faceMap("+X", block), faceMap("X", block), etc
+
+
+* add lists for world, ie. world:[myworld1,myworld2]
+* add NOT for world, ie. world:NOT[thisworld]
+* edge/corner specification
+* advanced requirements (eg. AND[3f[LEAVES|LOGS],NOT[1f[WATER]]])
+* "near" requirements (eg. cobble to mossy at random (low chance) but not NEAR 3 blocks of lava)
